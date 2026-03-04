@@ -1,7 +1,1674 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Ebin Deni Raj | Associate Dean, IIIT Kottayam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ CSS VARIABLES ============ */
+:root {
+  --navy: #0d2137;
+  --navy2: #1a3a5c;
+  --teal: #2e86ab;
+  --teal-light: #4ba3c7;
+  --gold: #c8860a;
+  --gold-light: #f0a832;
+  --cream: #f8f4ef;
+  --white: #ffffff;
+  --gray: #6b7a8d;
+  --light-bg: #f0f4f8;
+  --card-bg: #ffffff;
+  --text-dark: #0d2137;
+  --text-mid: #3a5068;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', sans-serif;
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 2px 12px rgba(13,33,55,0.08);
+  --shadow-md: 0 8px 32px rgba(13,33,55,0.12);
+  --shadow-lg: 0 20px 60px rgba(13,33,55,0.18);
+}
+
+/* ============ RESET & BASE ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(13,33,55,0.96);
+  backdrop-filter: blur(12px);
+  padding: 0.7rem 3rem;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--gold-light); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--gold-light);
+  transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* ============ HERO ============ */
+#hero {
+  min-height: 100vh;
+  background: var(--navy);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Animated mesh background */
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(46,134,171,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(200,134,10,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 80% at 90% 80%, rgba(46,134,171,0.1) 0%, transparent 60%);
+}
+
+/* Dot grid pattern */
+.hero-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  animation: driftDots 20s linear infinite;
+}
+@keyframes driftDots {
+  0% { background-position: 0 0; }
+  100% { background-position: 36px 36px; }
+}
+
+/* Floating orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: floatOrb 8s ease-in-out infinite;
+}
+.orb-1 { width: 400px; height: 400px; background: rgba(46,134,171,0.12); top: -100px; right: -100px; animation-delay: 0s; }
+.orb-2 { width: 300px; height: 300px; background: rgba(200,134,10,0.08); bottom: -50px; left: -50px; animation-delay: 3s; }
+.orb-3 { width: 200px; height: 200px; background: rgba(46,134,171,0.08); top: 50%; right: 20%; animation-delay: 6s; }
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(20px,-20px) scale(1.05); }
+  66% { transform: translate(-15px,15px) scale(0.95); }
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  padding: 8rem 3rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(46,134,171,0.2);
+  border: 1px solid rgba(46,134,171,0.4);
+  color: var(--teal-light);
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: fadeSlideUp 0.8s ease both;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--teal-light);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.8);} }
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  animation: fadeSlideUp 0.8s 0.1s ease both;
+}
+.hero-name span { color: var(--gold-light); }
+
+.hero-title {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  animation: fadeSlideUp 0.8s 0.2s ease both;
+}
+.hero-inst {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.8s 0.25s ease both;
+}
+
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.8s 0.3s ease both;
+}
+.hero-tag {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.hero-tag:hover {
+  background: rgba(46,134,171,0.25);
+  border-color: var(--teal);
+  color: var(--white);
+}
+
+.hero-links {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeSlideUp 0.8s 0.35s ease both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--teal);
+  color: var(--white);
+  border: 2px solid var(--teal);
+}
+.btn-primary:hover {
+  background: var(--teal-light);
+  border-color: var(--teal-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(46,134,171,0.4);
+}
+.btn-outline {
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  border: 2px solid rgba(255,255,255,0.25);
+}
+.btn-outline:hover {
+  border-color: rgba(255,255,255,0.6);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Hero photo */
+.hero-photo-wrap {
+  animation: fadeSlideUp 0.8s 0.4s ease both;
+  position: relative;
+}
+.hero-photo-ring {
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--teal), var(--gold));
+  position: relative;
+}
+.hero-photo-ring::before {
+  content: '';
+  position: absolute; inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(46,134,171,0.3);
+  animation: spinSlow 12s linear infinite;
+}
+.hero-photo-ring::after {
+  content: '';
+  position: absolute; inset: -18px;
+  border-radius: 50%;
+  border: 1px dashed rgba(200,134,10,0.2);
+  animation: spinSlow 20s linear infinite reverse;
+}
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+.hero-photo {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--navy2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--teal-light);
+  letter-spacing: -2px;
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Metrics strip */
+.metrics-strip {
+  position: relative; z-index: 2;
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 2rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+.metric {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  animation: fadeSlideUp 0.8s ease both;
+}
+.metric:last-child { border-right: none; }
+.metric-val {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.metric-lbl {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ SECTIONS COMMON ============ */
+section { padding: 6rem 3rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  width: 28px; height: 2px;
+  background: var(--teal);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-sub {
+  font-size: 1rem;
+  color: var(--gray);
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============ RESEARCH INTERESTS ============ */
+#research { background: var(--light-bg); }
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.research-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid rgba(46,134,171,0.12);
+  transition: all var(--transition);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.research-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--teal-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transition);
+}
+.research-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--teal);
+}
+.research-card:hover::before { transform: scaleX(1); }
+.research-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.research-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.research-card p {
+  font-size: 0.8rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* ============ PUBLICATIONS ============ */
+#publications { background: var(--white); }
+.pub-filter {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.filter-btn {
+  padding: 0.4rem 1.1rem;
+  border-radius: 100px;
+  border: 1.5px solid rgba(46,134,171,0.25);
+  background: transparent;
+  color: var(--gray);
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--white);
+}
+.pub-list { display: flex; flex-direction: column; gap: 1rem; }
+.pub-item {
+  background: var(--light-bg);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid transparent;
+  transition: all var(--transition);
+  display: flex; gap: 1.25rem; align-items: flex-start;
+}
+.pub-item:hover {
+  background: var(--white);
+  border-left-color: var(--teal);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+}
+.pub-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(46,134,171,0.25);
+  min-width: 2.5rem;
+  line-height: 1.2;
+}
+.pub-content { flex: 1; }
+.pub-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+.pub-meta {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+}
+.pub-meta em { color: var(--teal); font-style: italic; }
+.pub-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.pub-tag {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.tag-sci { background: rgba(46,134,171,0.1); color: var(--teal); }
+.tag-award { background: rgba(200,134,10,0.1); color: var(--gold); }
+.tag-scopus { background: rgba(100,100,200,0.1); color: #5555cc; }
+.tag-if { background: rgba(46,134,171,0.08); color: var(--navy2); border: 1px solid rgba(46,134,171,0.2); }
+
+.pub-see-more {
+  text-align: center; margin-top: 1.5rem;
+}
+
+/* ============ PROJECTS ============ */
+#projects { background: var(--navy); position: relative; overflow: hidden; }
+#projects .section-title { color: var(--white); }
+#projects .section-sub { color: rgba(255,255,255,0.5); }
+#projects .section-label { color: var(--gold-light); }
+#projects .section-label::before { background: var(--gold-light); }
+
+.projects-bg {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  position: relative; z-index: 1;
+}
+.project-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: all var(--transition);
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+.project-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--teal), var(--gold-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transition);
+}
+.project-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(46,134,171,0.4);
+  transform: translateY(-4px);
+}
+.project-card:hover::after { transform: scaleX(1); }
+.project-amount {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 0.25rem;
+}
+.project-agency {
+  font-size: 0.75rem;
+  color: var(--teal-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.project-title {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.project-meta {
+  display: flex; gap: 1rem; align-items: center;
+}
+.project-role {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+  background: rgba(46,134,171,0.2);
+  color: var(--teal-light);
+  font-weight: 600;
+}
+.project-year {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Total funding banner */
+.funding-banner {
+  position: relative; z-index: 1;
+  margin-top: 2.5rem;
+  background: rgba(200,134,10,0.08);
+  border: 1px solid rgba(200,134,10,0.2);
+  border-radius: 14px;
+  padding: 1.5rem 2rem;
+  display: flex; align-items: center; gap: 2rem;
+  flex-wrap: wrap;
+}
+.funding-total {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold-light);
+}
+.funding-label {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ============ AWARDS ============ */
+#awards { background: var(--cream); }
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.award-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: all var(--transition);
+}
+.award-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: rgba(200,134,10,0.2);
+}
+.award-star {
+  width: 40px; height: 40px; min-width: 40px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.award-year {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+.award-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+.award-body {
+  font-size: 0.78rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* ============ PHD STUDENTS ============ */
+#phd { background: var(--white); }
+.phd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.phd-card {
+  border-radius: 16px;
+  padding: 1.75rem;
+  border: 1px solid rgba(46,134,171,0.15);
+  background: var(--white);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.phd-card.awarded {
+  background: linear-gradient(135deg, rgba(46,134,171,0.04), rgba(46,134,171,0.0));
+  border-color: var(--teal);
+}
+.phd-card::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle, rgba(46,134,171,0.08), transparent);
+  border-radius: 0 0 0 80px;
+}
+.phd-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.phd-status {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+.status-awarded { background: rgba(46,134,171,0.1); color: var(--teal); }
+.status-ongoing { background: rgba(200,134,10,0.1); color: var(--gold); }
+.phd-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.phd-topic {
+  font-size: 0.82rem;
+  color: var(--gray);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+.phd-meta {
+  display: flex; gap: 1rem;
+  font-size: 0.75rem;
+  color: rgba(100,120,140,0.7);
+}
+.phd-outcome {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(46,134,171,0.1);
+  font-size: 0.78rem;
+  color: var(--teal);
+  font-weight: 500;
+}
+
+/* ============ COURSES ============ */
+#courses { background: var(--light-bg); }
+.courses-tabs {
+  display: flex; gap: 0.5rem; margin-bottom: 2rem;
+}
+.tab-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(46,134,171,0.2);
+  background: transparent;
+  color: var(--gray);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tab-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+.tab-content { display: none; }
+.tab-content.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.course-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: all var(--transition);
+  display: flex; gap: 1rem; align-items: center;
+}
+.course-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.course-level {
+  width: 38px; height: 38px; min-width: 38px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+.level-pg { background: rgba(46,134,171,0.1); color: var(--teal); }
+.level-ug { background: rgba(200,134,10,0.1); color: var(--gold); }
+.course-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.2rem;
+}
+.course-period {
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+
+/* ============ TALKS ============ */
+#talks { background: var(--white); }
+.talks-timeline { position: relative; }
+.talks-timeline::before {
+  content: '';
+  position: absolute; left: 9px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--teal), rgba(46,134,171,0.1));
+}
+.talk-item {
+  display: flex; gap: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.talk-dot {
+  width: 20px; height: 20px; min-width: 20px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--teal);
+  margin-top: 4px;
+  position: relative; z-index: 1;
+  transition: all 0.3s;
+}
+.talk-item:hover .talk-dot {
+  background: var(--teal);
+  transform: scale(1.2);
+}
+.talk-item.keynote .talk-dot {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.talk-body {
+  background: var(--light-bg);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  flex: 1;
+  transition: all var(--transition);
+  border-left: 3px solid transparent;
+}
+.talk-item:hover .talk-body {
+  background: var(--white);
+  border-left-color: var(--teal);
+  box-shadow: var(--shadow-sm);
+}
+.talk-item.keynote .talk-body { border-left-color: var(--gold); }
+.talk-keynote-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+.talk-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+.talk-meta {
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+.talk-meta span { color: var(--teal); font-weight: 500; }
+
+/* ============ CONTACT ============ */
+#contact { background: var(--navy); }
+#contact .section-title { color: var(--white); }
+#contact .section-label { color: var(--teal-light); }
+#contact .section-label::before { background: var(--teal-light); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 1rem; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.contact-item:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(46,134,171,0.4);
+  transform: translateX(4px);
+}
+.contact-icon {
+  width: 38px; height: 38px; min-width: 38px;
+  border-radius: 9px;
+  background: rgba(46,134,171,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.contact-item-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.contact-item-val {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+.glassbox-feature {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+}
+.glassbox-logo-wrap { margin-bottom: 1.5rem; }
+.glassbox-logo-wrap img { max-width: 180px; }
+.glassbox-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.glassbox-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: #08111f;
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.8rem;
+}
+footer a { color: var(--teal-light); text-decoration: none; }
+
+/* ============ MOBILE ============ */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero-inner { grid-template-columns: 1fr; padding: 7rem 1.5rem 2rem; gap: 2.5rem; }
+  .hero-photo-wrap { display: flex; justify-content: center; order: -1; }
+  .hero-photo-ring { width: 180px; height: 180px; }
+  .metrics-strip { grid-template-columns: repeat(4, 1fr); padding: 1.5rem; gap: 0.5rem; }
+  .metric { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  section { padding: 4rem 1.5rem; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
 <body>
-    <h1>Hello World!</h1>
-    <p>My GitHub Pages site is live.</p>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">EDR<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#phd">Students</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#talks">Talks</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        IIIT Kottayam &mdash; Institution of National Importance
+      </div>
+      <h1 class="hero-name">Dr. Ebin<br><span>Deni Raj</span></h1>
+      <p class="hero-title">Associate Dean, Academic Affairs &nbsp;&bull;&nbsp; Assistant Professor (Grade-I), CSE</p>
+      <p class="hero-inst">Indian Institute of Information Technology Kottayam, Kerala &mdash; 686635</p>
+
+      <div class="hero-tags">
+        <span class="hero-tag">ACM Distinguished Speaker</span>
+        <span class="hero-tag">IEEE Senior Member</span>
+        <span class="hero-tag">AAAI Member 2024</span>
+        <span class="hero-tag">XAI Researcher</span>
+        <span class="hero-tag">Responsible AI</span>
+      </div>
+
+      <div class="hero-links">
+        <a href="mailto:ebindeniraj@iiitkottayam.ac.in" class="btn btn-primary">✉ Get in Touch</a>
+        <a href="https://scholar.google.com/citations?user=iJKcm0AAAAAJ" target="_blank" class="btn btn-outline">Scholar Profile</a>
+        <a href="https://github.com/raj007iiit" target="_blank" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <!-- REPLACE src with your photo path, e.g. src="photo.jpg" -->
+        <div class="hero-photo">EDR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- metrics strip inside hero -->
+  <div style="position:relative;z-index:2;width:100%;background:rgba(0,0,0,0.2);border-top:1px solid rgba(255,255,255,0.06);">
+    <div class="metrics-strip">
+      <div class="metric reveal"><div class="metric-val">53+</div><div class="metric-lbl">Publications</div></div>
+      <div class="metric reveal reveal-delay-1"><div class="metric-val">13</div><div class="metric-lbl">h-index</div></div>
+      <div class="metric reveal reveal-delay-1"><div class="metric-val">17</div><div class="metric-lbl">i10-index</div></div>
+      <div class="metric reveal reveal-delay-2"><div class="metric-val">1139+</div><div class="metric-lbl">Citations</div></div>
+      <div class="metric reveal reveal-delay-2"><div class="metric-val">39.4</div><div class="metric-lbl">Cumul. IF</div></div>
+      <div class="metric reveal reveal-delay-3"><div class="metric-val">9</div><div class="metric-lbl">Best Papers</div></div>
+      <div class="metric reveal reveal-delay-3"><div class="metric-val">6+</div><div class="metric-lbl">Funded Projects</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH INTERESTS -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label reveal">Research Focus</div>
+    <h2 class="section-title reveal">Research Interests</h2>
+    <p class="section-sub reveal">Working at the intersection of responsible AI, explainability, and distributed learning systems.</p>
+
+    <div class="research-grid">
+      <div class="research-card reveal">
+        <span class="research-icon">🔍</span>
+        <h3>Explainable AI (XAI)</h3>
+        <p>Making machine learning models interpretable and transparent for high-stakes decisions.</p>
+      </div>
+      <div class="research-card reveal reveal-delay-1">
+        <span class="research-icon">⚖️</span>
+        <h3>Responsible &amp; Fair AI</h3>
+        <p>Ensuring fairness, accountability, and ethical deployment of AI systems.</p>
+      </div>
+      <div class="research-card reveal reveal-delay-1">
+        <span class="research-icon">🔗</span>
+        <h3>Federated Learning</h3>
+        <p>Privacy-preserving distributed machine learning for IoMT and edge systems.</p>
+      </div>
+      <div class="research-card reveal reveal-delay-2">
+        <span class="research-icon">🧠</span>
+        <h3>LLMs &amp; NLP</h3>
+        <p>Efficiency, fine-tuning, and explainability of large language models.</p>
+      </div>
+      <div class="research-card reveal reveal-delay-2">
+        <span class="research-icon">👁️</span>
+        <h3>Computer Vision</h3>
+        <p>Deep learning for medical imaging, plant disease detection, and remote sensing.</p>
+      </div>
+      <div class="research-card reveal reveal-delay-3">
+        <span class="research-icon">🌐</span>
+        <h3>Social Network Analysis</h3>
+        <p>Fuzzy-based community detection, trust prediction, and influence modelling.</p>
+      </div>
+      <div class="research-card reveal reveal-delay-3">
+        <span class="research-icon">🏥</span>
+        <h3>Healthcare AI &amp; IoT</h3>
+        <p>Wearable health monitoring, disease screening, and smart healthcare systems.</p>
+      </div>
+      <div class="research-card reveal reveal-delay-4">
+        <span class="research-icon">📈</span>
+        <h3>Concept Drift &amp; Time Series</h3>
+        <p>Adaptive models for streaming data and interpretable temporal analysis.</p>
+      </div>
+      <div class="research-card reveal reveal-delay-4">
+        <span class="research-icon">📡</span>
+        <h3>6G &amp; UAV Systems</h3>
+        <p>Ultra-reliable low-latency communication and UAV-enabled networks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-label reveal">Scholarly Output</div>
+    <h2 class="section-title reveal">Publications</h2>
+    <p class="section-sub reveal">53+ publications across IEEE, ACM, Springer, Elsevier. h-index: 13 &nbsp;|&nbsp; Citations: 1139+</p>
+
+    <div class="pub-filter reveal">
+      <button class="filter-btn active" onclick="filterPubs('all', this)">All</button>
+      <button class="filter-btn" onclick="filterPubs('sci', this)">SCI Journals</button>
+      <button class="filter-btn" onclick="filterPubs('conf', this)">Conferences</button>
+      <button class="filter-btn" onclick="filterPubs('chapter', this)">Book Chapters</button>
+    </div>
+
+    <div class="pub-list" id="pubList">
+
+      <div class="pub-item reveal" data-cat="sci">
+        <div class="pub-num">01</div>
+        <div class="pub-content">
+          <div class="pub-title">Efficiency and Performance Optimization in Large Language Models through IB Fine-Tuning</div>
+          <div class="pub-meta">Jo A.A., <strong>Raj E.D.</strong>, Sahoo J. &nbsp;&mdash;&nbsp; <em>ACM Transactions on Intelligent Systems and Technology</em>, Vol. 16, 2025</div>
+          <div class="pub-tags"><span class="pub-tag tag-sci">SCI</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="sci">
+        <div class="pub-num">02</div>
+        <div class="pub-content">
+          <div class="pub-title">Incentivized Federated Learning: A Survey</div>
+          <div class="pub-meta">Nair A.K., Coleri S., Sahoo J., Cenkeramaddi L.R., <strong>Raj E.D.</strong> &nbsp;&mdash;&nbsp; <em>IEEE Transactions on Emerging Topics in Computational Intelligence</em>, Vol. 9, 2025, pp. 3190–3209</div>
+          <div class="pub-tags"><span class="pub-tag tag-sci">SCI</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="sci">
+        <div class="pub-num">03</div>
+        <div class="pub-content">
+          <div class="pub-title">Improved Image Dehazing Model with Color Correction Transform-Based Dark Channel Prior</div>
+          <div class="pub-meta">Thomas J., <strong>Raj E.D.</strong> &nbsp;&mdash;&nbsp; <em>The Visual Computer</em>, Vol. 40, 2024, pp. 8767–8790</div>
+          <div class="pub-tags"><span class="pub-tag tag-sci">SCI</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="sci">
+        <div class="pub-num">04</div>
+        <div class="pub-content">
+          <div class="pub-title">Information Granulation-Based Community Detection for Social Networks</div>
+          <div class="pub-meta"><strong>Raj E.D.</strong>, Manogaran G., Srivastava G., Wu Y. &nbsp;&mdash;&nbsp; <em>IEEE Transactions on Computational Social Systems</em>, Vol. 8, 2021</div>
+          <div class="pub-tags"><span class="pub-tag tag-sci">SCI</span><span class="pub-tag tag-if">IF: 4.747</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="sci">
+        <div class="pub-num">05</div>
+        <div class="pub-content">
+          <div class="pub-title">A Fuzzy Adaptive Resonance Theory Inspired Overlapping Community Detection Method for Online Social Networks</div>
+          <div class="pub-meta"><strong>Raj E.D.</strong>, Babu L.D.D. &nbsp;&mdash;&nbsp; <em>Knowledge-Based Systems</em>, Vol. 113, 2016, pp. 75–87</div>
+          <div class="pub-tags"><span class="pub-tag tag-sci">SCI</span><span class="pub-tag tag-if">IF: 8.139</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="sci">
+        <div class="pub-num">06</div>
+        <div class="pub-content">
+          <div class="pub-title">Flocking Based Evolutionary Computation Strategy for Measuring Centrality of Online Social Networks</div>
+          <div class="pub-meta">Dhinesh Babu L.D., <strong>Raj E.D.</strong> &nbsp;&mdash;&nbsp; <em>Applied Soft Computing</em>, Vol. 58, 2017, pp. 495–516</div>
+          <div class="pub-tags"><span class="pub-tag tag-sci">SCI</span><span class="pub-tag tag-if">IF: 8.263</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="conf">
+        <div class="pub-num">07</div>
+        <div class="pub-content">
+          <div class="pub-title">Challenges in Streaming Data Analysis for Building an Adaptive Model for Handling Concept Drifts</div>
+          <div class="pub-meta">Shahad P., <strong>Raj E.D.</strong> &nbsp;&mdash;&nbsp; <em>IEEE ICSCAN 2021</em></div>
+          <div class="pub-tags"><span class="pub-tag tag-award">🏆 Best Paper Award</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="conf">
+        <div class="pub-num">08</div>
+        <div class="pub-content">
+          <div class="pub-title">FYEO: A Character Level Model for Lip Reading</div>
+          <div class="pub-meta">Joshi V.S., <strong>Raj E.D.</strong> &nbsp;&mdash;&nbsp; <em>IEEE ICSCC 2021</em>, pp. 257–262</div>
+          <div class="pub-tags"><span class="pub-tag tag-award">🏆 Best Paper Award</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="chapter">
+        <div class="pub-num">09</div>
+        <div class="pub-content">
+          <div class="pub-title">Teaching Explainable Machine Learning to Interdisciplinary Learners: A Pedagogical Model for Responsible AI Education</div>
+          <div class="pub-meta"><strong>Raj E.D.</strong>, Lekha D.S., Jo A.A., Jose A.C. &nbsp;&mdash;&nbsp; <em>CCIS</em>, Vol. 2739, Springer, 2026, pp. 3–15</div>
+          <div class="pub-tags"><span class="pub-tag tag-scopus">Book Chapter</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal" data-cat="sci">
+        <div class="pub-num">10</div>
+        <div class="pub-content">
+          <div class="pub-title">Privacy Preserving Federated Learning Framework for IoMT Based Big Data Analysis using Edge Computing</div>
+          <div class="pub-meta">Nair A.K., Sahoo J., <strong>Raj E.D.</strong> &nbsp;&mdash;&nbsp; <em>Computer Standards and Interfaces</em>, Vol. 86, 2023</div>
+          <div class="pub-tags"><span class="pub-tag tag-sci">SCI</span><span class="pub-tag tag-if">IF: 3.6</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pub-see-more reveal">
+      <a href="https://scholar.google.com/citations?user=iJKcm0AAAAAJ" target="_blank" class="btn btn-primary" style="display:inline-flex;">View All Publications on Google Scholar &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-bg"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">Funded Research</div>
+    <h2 class="section-title reveal">Projects &amp; Funding</h2>
+    <p class="section-sub reveal" style="color:rgba(255,255,255,0.5)">Leading sponsored research across healthcare AI, 6G networks, responsible computing, and more.</p>
+
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-amount">₹1.30 Cr</div>
+        <div class="project-agency">ICMR &mdash; 2026</div>
+        <div class="project-title">Smartphone Imaging-based AI for Early Detection of Ocular Surface &amp; Eyelid Tumors: Multi-centric Study (AIIMS New Delhi, Kalyani, Nagpur, Bilaspur)</div>
+        <div class="project-meta"><span class="project-role">Principal Investigator</span><span class="project-year">2026</span></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-amount">₹60 L</div>
+        <div class="project-agency">UKIERI &mdash; 2024</div>
+        <div class="project-title">UAV-Enabled Ultra-Reliable Low Latency Communication for Energy Efficiency &amp; Latency Reduction in 6G Networks</div>
+        <div class="project-meta"><span class="project-role">Co-Investigator</span><span class="project-year">2024</span></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-amount">₹25 L</div>
+        <div class="project-agency">Mozilla Foundation &amp; USAID &mdash; 2023</div>
+        <div class="project-title">Responsible Computing — Advancing fairness, transparency, and accountability in AI systems</div>
+        <div class="project-meta"><span class="project-role">Principal Investigator</span><span class="project-year">2023</span></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-amount">₹24 L</div>
+        <div class="project-agency">International &mdash; 2020</div>
+        <div class="project-title">AI for Social Assessment (AIFORA) — Collaboration with Johannes Gutenberg University, Mainz, Germany</div>
+        <div class="project-meta"><span class="project-role">Principal Investigator</span><span class="project-year">2020</span></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-amount">₹12.71 L</div>
+        <div class="project-agency">Microsoft AI for Earth &mdash; 2019</div>
+        <div class="project-title">AI for Detection &amp; Classification of Diseases in Rice &amp; Wheat using Computer Vision</div>
+        <div class="project-meta"><span class="project-role">Principal Investigator</span><span class="project-year">2019</span></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-amount">₹21.84 L</div>
+        <div class="project-agency">TIH, IIT Palakkad &mdash; 2021</div>
+        <div class="project-title">Doctoral Fellowship for PhD Research in Machine Learning and Federated Systems</div>
+        <div class="project-meta"><span class="project-role">Principal Investigator</span><span class="project-year">2021</span></div>
+      </div>
+    </div>
+
+    <div class="funding-banner reveal">
+      <div>
+        <div class="funding-total">₹2.73 Cr+</div>
+        <div class="funding-label">Total research funding secured as PI / Co-PI</div>
+      </div>
+      <div style="color:rgba(255,255,255,0.4);font-size:0.85rem;max-width:400px;">
+        Includes sponsored research from ICMR, UKIERI, Mozilla Foundation, USAID, Microsoft, IIT Palakkad TIH, and international collaborators.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="section-inner">
+    <div class="section-label reveal">Recognition</div>
+    <h2 class="section-title reveal">Honours &amp; Awards</h2>
+    <p class="section-sub reveal">Recognised nationally and internationally for research excellence and academic leadership.</p>
+
+    <div class="awards-grid">
+      <div class="award-card reveal">
+        <div class="award-star">🏆</div>
+        <div>
+          <div class="award-year">2020 – Present</div>
+          <div class="award-title">ACM Distinguished Speaker</div>
+          <div class="award-body">Globally recognised invitation-only program. Invited to deliver talks at premier institutions under ACM DSP.</div>
+        </div>
+      </div>
+      <div class="award-card reveal reveal-delay-1">
+        <div class="award-star">⭐</div>
+        <div>
+          <div class="award-year">2025</div>
+          <div class="award-title">Best PhD Thesis Guide Award</div>
+          <div class="award-body">Awarded by IIT Roorkee for excellence in doctoral supervision.</div>
+        </div>
+      </div>
+      <div class="award-card reveal reveal-delay-1">
+        <div class="award-star">📄</div>
+        <div>
+          <div class="award-year">2026</div>
+          <div class="award-title">Best Paper Award</div>
+          <div class="award-body">"Explainable AI for Emotion Divergence: Artist-Intended vs Audience-Perceived Emotions" — SPELLL 2026, Springer.</div>
+        </div>
+      </div>
+      <div class="award-card reveal reveal-delay-2">
+        <div class="award-star">📄</div>
+        <div>
+          <div class="award-year">2025</div>
+          <div class="award-title">Best Paper Award</div>
+          <div class="award-body">"Transparency in Legal AI" — ACM MIT Bengaluru (Scopus), with Linnaeus University, Sweden.</div>
+        </div>
+      </div>
+      <div class="award-card reveal reveal-delay-2">
+        <div class="award-star">🎖️</div>
+        <div>
+          <div class="award-year">2022</div>
+          <div class="award-title">Distinguished Jury Member — AI Gamechanger</div>
+          <div class="award-body">NASSCOM &amp; MeitY initiative to accelerate India's AI excellence.</div>
+        </div>
+      </div>
+      <div class="award-card reveal reveal-delay-3">
+        <div class="award-star">🎖️</div>
+        <div>
+          <div class="award-year">2021–2022</div>
+          <div class="award-title">Jury Member — Aegis Graham Bell Awards</div>
+          <div class="award-body">11th &amp; 12th Edition — MeitY, NITI Aayog, Skill India, NIC, Maharashtra State Innovation Society.</div>
+        </div>
+      </div>
+      <div class="award-card reveal reveal-delay-3">
+        <div class="award-star">🥇</div>
+        <div>
+          <div class="award-year">2021 × 3</div>
+          <div class="award-title">Three Best Paper Awards</div>
+          <div class="award-body">IEEE ICSCC, IEEE ICSCAN, and ICInPro 2021 — image dehazing, lip reading, concept drift.</div>
+        </div>
+      </div>
+      <div class="award-card reveal reveal-delay-4">
+        <div class="award-star">🎓</div>
+        <div>
+          <div class="award-year">2016</div>
+          <div class="award-title">Best PhD Thesis Award</div>
+          <div class="award-body">Awarded by the Computer Society of India (CSI).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHD STUDENTS -->
+<section id="phd">
+  <div class="section-inner">
+    <div class="section-label reveal">Doctoral Supervision</div>
+    <h2 class="section-title reveal">PhD Students</h2>
+    <p class="section-sub reveal">Supervising research scholars across XAI, federated learning, computer vision, and NLP.</p>
+
+    <div class="phd-grid">
+      <div class="phd-card awarded reveal">
+        <div class="phd-status status-awarded">✓ Awarded</div>
+        <div class="phd-name">Dr. Jeena Thomas</div>
+        <div class="phd-topic">Computer Vision and Explainable AI — image dehazing, plant disease detection, deep learning applications</div>
+        <div class="phd-meta"><span>2019</span></div>
+        <div class="phd-outcome">→ Faculty, IIIT Kottayam (DST Woman Scientist, Principal Investigator, WOS-A)</div>
+      </div>
+
+      <div class="phd-card awarded reveal reveal-delay-1">
+        <div class="phd-status status-awarded">✓ Awarded</div>
+        <div class="phd-name">Dr. Akarsh K. Nair</div>
+        <div class="phd-topic">Federated Learning, UAV Security, 6G Communication, Privacy-Preserving ML</div>
+        <div class="phd-meta"><span>2019</span></div>
+        <div class="phd-outcome">→ Researcher, Loughborough University, United Kingdom</div>
+      </div>
+
+      <div class="phd-card reveal reveal-delay-1">
+        <div class="phd-status status-ongoing">● Ongoing</div>
+        <div class="phd-name">Ashly Ann Jo</div>
+        <div class="phd-topic">Explainable AI, Large Language Models, NLP, Transformer Interpretability</div>
+        <div class="phd-meta"><span>From 2020</span></div>
+      </div>
+
+      <div class="phd-card reveal reveal-delay-2">
+        <div class="phd-status status-ongoing">● Ongoing</div>
+        <div class="phd-name">Shahad P.</div>
+        <div class="phd-topic">Concept Drift, Streaming Data Analysis, IoT, Adaptive Learning Systems</div>
+        <div class="phd-meta"><span>From 2020</span></div>
+      </div>
+
+      <div class="phd-card reveal reveal-delay-2">
+        <div class="phd-status status-ongoing">● Ongoing</div>
+        <div class="phd-name">Remya Raveendran</div>
+        <div class="phd-topic">Deep Learning, Federated ML, Explainable AI for classification tasks</div>
+        <div class="phd-meta"><span>From 2022 &nbsp;|&nbsp; External</span></div>
+      </div>
+
+      <div class="phd-card reveal reveal-delay-3">
+        <div class="phd-status status-ongoing">● Ongoing</div>
+        <div class="phd-name">Sasikumar M.</div>
+        <div class="phd-topic">XAI for Time Series, Stock Price Prediction, Interpretable Finance</div>
+        <div class="phd-meta"><span>From 2022</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-inner">
+    <div class="section-label reveal">Teaching</div>
+    <h2 class="section-title reveal">Courses Taught</h2>
+    <p class="section-sub reveal">Delivering courses at postgraduate and undergraduate levels at IIIT Kottayam since 2017.</p>
+
+    <div class="courses-tabs reveal">
+      <button class="tab-btn active" onclick="switchTab('pg', this)">Postgraduate</button>
+      <button class="tab-btn" onclick="switchTab('ug', this)">Undergraduate</button>
+      <button class="tab-btn" onclick="switchTab('other', this)">Other Institutions</button>
+    </div>
+
+    <div class="tab-content active" id="tab-pg">
+      <div class="course-card">
+        <div class="course-level level-pg">PG</div>
+        <div>
+          <div class="course-name">Introduction to AI &amp; Data Science</div>
+          <div class="course-period">DSC513 &mdash; 2019–Present</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-level level-pg">PG</div>
+        <div>
+          <div class="course-name">R Programming</div>
+          <div class="course-period">M.Tech AI &amp; Data Science &mdash; 2020–2023</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-level level-pg">PG</div>
+        <div>
+          <div class="course-name">Data Structures &amp; Programming</div>
+          <div class="course-period">M.Tech &mdash; 2017–Present</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-ug">
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Programming in C</div><div class="course-period">B.Tech CSE &mdash; 2017–2020</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Python Programming</div><div class="course-period">B.Tech CSE &mdash; 2019–Present</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Bash Scripting</div><div class="course-period">B.Tech CSE &mdash; 2017–2019</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Data Structures</div><div class="course-period">B.Tech CSE &mdash; 2017–Present</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Theory of Computation</div><div class="course-period">B.Tech CSE &mdash; 2018–Present</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Algorithm Analysis &amp; Design</div><div class="course-period">B.Tech CSE &mdash; 2018–Present</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Data Warehousing &amp; Mining</div><div class="course-period">B.Tech CSE &mdash; 2020–Present</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Parallel Algorithms</div><div class="course-period">B.Tech CSE &mdash; 2021–Present</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Advanced Data Mining</div><div class="course-period">B.Tech CSE &mdash; 2022–Present</div></div></div>
+    </div>
+
+    <div class="tab-content" id="tab-other">
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Embedded Systems</div><div class="course-period">UKF College of Engg. &mdash; 2016–17</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Sustainable Engineering</div><div class="course-period">UKF College of Engg. &mdash; 2016–17</div></div></div>
+      <div class="course-card"><div class="course-level level-ug">UG</div><div><div class="course-name">Cyber Law</div><div class="course-period">ACE Academy, Trivandrum &mdash; 2012</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INVITED TALKS -->
+<section id="talks">
+  <div class="section-inner">
+    <div class="section-label reveal">Outreach</div>
+    <h2 class="section-title reveal">Invited Talks &amp; Keynotes</h2>
+    <p class="section-sub reveal">26+ invited talks and keynotes at IITs, national conferences, FDPs, and public forums.</p>
+
+    <div class="talks-timeline">
+      <div class="talk-item reveal">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-title">Responsible AI and Blockchain Technology</div>
+          <div class="talk-meta">ESF–IITM Workshop on Distributed Ledgers with Hedera &nbsp;|&nbsp; <span>IIT Madras, 2025</span></div>
+        </div>
+      </div>
+      <div class="talk-item keynote reveal reveal-delay-1">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-keynote-badge">★ Keynote</div>
+          <div class="talk-title">National Conference on Research in Emerging Areas (NACORE-24)</div>
+          <div class="talk-meta"><span>Amal Jyothi Engineering College, Kanjirapally, 2024</span></div>
+        </div>
+      </div>
+      <div class="talk-item keynote reveal reveal-delay-1">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-keynote-badge">★ Keynote</div>
+          <div class="talk-title">ATAL FDP on Explainable AI</div>
+          <div class="talk-meta"><span>Adishankara Institute of Engineering &amp; Technology, 2024</span></div>
+        </div>
+      </div>
+      <div class="talk-item reveal reveal-delay-2">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-title">Theory and Practice of Social Network Analysis</div>
+          <div class="talk-meta">Workshop for M.Sc. Computational Social Sciences &amp; Digital Humanities &nbsp;|&nbsp; <span>IIT Jodhpur, Apr 2023</span></div>
+        </div>
+      </div>
+      <div class="talk-item reveal reveal-delay-2">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-title">AI and Data Science — Online Public Talk</div>
+          <div class="talk-meta">1300+ registrations &nbsp;|&nbsp; <span>Malayala Manorama, January 2022</span></div>
+        </div>
+      </div>
+      <div class="talk-item reveal reveal-delay-3">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-title">Data Storytelling through Data Visualization</div>
+          <div class="talk-meta">Winter School on Computational Methods for Social Sciences &nbsp;|&nbsp; <span>IIT Jodhpur, Dec 2022</span></div>
+        </div>
+      </div>
+      <div class="talk-item keynote reveal reveal-delay-3">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-keynote-badge">★ Keynote</div>
+          <div class="talk-title">ICIAETM-2021 International Conference</div>
+          <div class="talk-meta">~200 participants &nbsp;|&nbsp; <span>April 2021</span></div>
+        </div>
+      </div>
+      <div class="talk-item reveal reveal-delay-4">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-title">ACM Invited Talk: Pursuing a Career in Data Science</div>
+          <div class="talk-meta"><span>VRSEC Vijayawada, June 2021</span></div>
+        </div>
+      </div>
+      <div class="talk-item reveal reveal-delay-4">
+        <div class="talk-dot"></div>
+        <div class="talk-body">
+          <div class="talk-title">Machine Learning Research Concerns and Challenges — STTP</div>
+          <div class="talk-meta">~350 participants &nbsp;|&nbsp; <span>Amal Jyothi College of Engineering, Aug 2021</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal">Get in Touch</div>
+    <h2 class="section-title reveal" style="color:var(--white)">Contact</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <a class="contact-item" href="mailto:ebindeniraj@iiitkottayam.ac.in">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val">ebindeniraj@iiitkottayam.ac.in</div>
+          </div>
+        </a>
+        <a class="contact-item" href="https://iiitkottayam.irins.org/profile/594841" target="_blank">
+          <div class="contact-icon">🔗</div>
+          <div>
+            <div class="contact-item-label">IRINS Profile</div>
+            <div class="contact-item-val">iiitkottayam.irins.org</div>
+          </div>
+        </a>
+        <a class="contact-item" href="https://scholar.google.com/citations?user=iJKcm0AAAAAJ" target="_blank">
+          <div class="contact-icon">🎓</div>
+          <div>
+            <div class="contact-item-label">Google Scholar</div>
+            <div class="contact-item-val">scholar.google.com &rarr; iJKcm0AAAAAJ</div>
+          </div>
+        </a>
+        <a class="contact-item" href="https://orcid.org/0000-0003-3339-8601" target="_blank">
+          <div class="contact-icon">🆔</div>
+          <div>
+            <div class="contact-item-label">ORCID</div>
+            <div class="contact-item-val">0000-0003-3339-8601</div>
+          </div>
+        </a>
+        <a class="contact-item" href="https://github.com/raj007iiit" target="_blank">
+          <div class="contact-icon">⌨</div>
+          <div>
+            <div class="contact-item-label">GitHub</div>
+            <div class="contact-item-val">github.com/raj007iiit</div>
+          </div>
+        </a>
+        <a class="contact-item" href="http://www.ebindraj.com" target="_blank">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-item-label">Personal Website</div>
+            <div class="contact-item-val">www.ebindraj.com</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="glassbox-feature">
+          <div class="glassbox-logo-wrap">
+            <!-- Glass Box AI logo -->
+            <img src="glassbox.png" alt="Glass Box AI" onerror="this.style.display='none'">
+          </div>
+          <div class="glassbox-title">FACTS-H Lab</div>
+          <div class="glassbox-sub" style="margin-bottom:1.5rem;">
+            Home to the Glass Box AI research group at IIIT Kottayam — advancing Explainable, Fair, and Transparent AI systems for real-world impact.
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;justify-content:space-between;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
+              <span style="font-size:0.82rem;color:rgba(255,255,255,0.5);">Research Focus</span>
+              <span style="font-size:0.82rem;color:rgba(255,255,255,0.8);font-weight:500;">XAI &bull; Fairness &bull; Transparency</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
+              <span style="font-size:0.82rem;color:rgba(255,255,255,0.5);">Active PhD Scholars</span>
+              <span style="font-size:0.82rem;color:rgba(255,255,255,0.8);font-weight:500;">6 (2 Awarded)</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:0.75rem;background:rgba(255,255,255,0.05);border-radius:10px;">
+              <span style="font-size:0.82rem;color:rgba(255,255,255,0.5);">Location</span>
+              <span style="font-size:0.82rem;color:rgba(255,255,255,0.8);font-weight:500;">IIIT Kottayam, Kerala, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Dr. Ebin Deni Raj &nbsp;&bull;&nbsp; Associate Dean, Academic Affairs &nbsp;&bull;&nbsp; IIIT Kottayam &nbsp;&bull;&nbsp; <a href="mailto:ebindeniraj@iiitkottayam.ac.in">ebindeniraj@iiitkottayam.ac.in</a></p>
+</footer>
+
+<script>
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger metrics
+document.querySelectorAll('.metric').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.08) + 's';
+});
+
+// Publication filter
+function filterPubs(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pub-item').forEach(item => {
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'flex' : 'none';
+  });
+}
+
+// Course tabs
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+// Animate metric numbers
+function animateCount(el, target, suffix) {
+  let start = 0;
+  const dur = 1800;
+  const step = 16;
+  const inc = target / (dur / step);
+  const timer = setInterval(() => {
+    start = Math.min(start + inc, target);
+    el.textContent = (Number.isInteger(target) ? Math.floor(start) : start.toFixed(1)) + suffix;
+    if (start >= target) clearInterval(timer);
+  }, step);
+}
+
+// Trigger count animation when metrics are visible
+const metricObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const vals = [
+        {el: document.querySelectorAll('.metric-val')[0], n: 53, s: '+'},
+        {el: document.querySelectorAll('.metric-val')[1], n: 13, s: ''},
+        {el: document.querySelectorAll('.metric-val')[2], n: 17, s: ''},
+        {el: document.querySelectorAll('.metric-val')[3], n: 1139, s: '+'},
+        {el: document.querySelectorAll('.metric-val')[4], n: 39.4, s: ''},
+        {el: document.querySelectorAll('.metric-val')[5], n: 9, s: ''},
+        {el: document.querySelectorAll('.metric-val')[6], n: 6, s: '+'},
+      ];
+      vals.forEach(v => { if(v.el) animateCount(v.el, v.n, v.s); });
+      metricObs.disconnect();
+    }
+  });
+}, {threshold: 0.5});
+const metricsEl = document.querySelector('.metrics-strip');
+if (metricsEl) metricObs.observe(metricsEl);
+</script>
 </body>
 </html>
