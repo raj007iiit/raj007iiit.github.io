@@ -50,7 +50,7 @@ section{padding:6rem 3rem;}.section-inner{max-width:1200px;margin:0 auto;}
 .section-label{font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}.section-label::before{content:'';width:28px;height:2px;background:var(--teal);}
 .section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:1rem;}
 .section-sub{font-size:1rem;color:var(--gray);max-width:640px;margin-bottom:3rem;}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal{opacity:1;transform:translateY(0);transition:opacity .65s ease,transform .65s ease;}.reveal.will-animate{opacity:0;transform:translateY(28px);}.reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}.reveal-delay-3{transition-delay:.3s;}.reveal-delay-4{transition-delay:.4s;}
 #research{background:var(--light-bg);}.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;}
 .research-card{background:var(--white);border-radius:14px;padding:1.5rem;border:1px solid rgba(46,134,171,.12);transition:all var(--tr);position:relative;overflow:hidden;}
@@ -304,8 +304,13 @@ footer{background:#08111f;text-align:center;padding:2rem;color:rgba(255,255,255,
 <footer><p>&copy; 2026 Dr. Ebin Deni Raj &nbsp;&bull;&nbsp; Associate Dean &nbsp;&bull;&nbsp; IIIT Kottayam &nbsp;&bull;&nbsp; <a href="/cdn-cgi/l/email-protection#6401060d0a00010a0d16050e240d0d0d100f0b1010051d05094a05074a0d0a"><span class="__cf_email__" data-cfemail="ff9a9d96919b9a91968d9e95bf9696968b94908b8b9e869e92d19e9cd19691">[email&#160;protected]</span></a></p></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',scrollY>60));
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}) ,{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const revealEls=document.querySelectorAll('.reveal');
+// Only hide elements if JS is running — progressive enhancement
+revealEls.forEach(el=>el.classList.add('will-animate'));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.05,rootMargin:'0px 0px 0px 0px'});
+revealEls.forEach(el=>obs.observe(el));
+// Fallback: reveal all after 1.5s regardless
+setTimeout(()=>revealEls.forEach(el=>el.classList.add('visible')),1500);
 function switchTab(t,b){document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('tab-'+t).classList.add('active');}
 function copyBib(btn){const ti=btn.closest('.paper-body').querySelector('.paper-title').textContent.trim();const b='@article{raj,\n  author={Raj, Ebin Deni},\n  title={'+ti+'},\n  year={2024}\n}';navigator.clipboard.writeText(b).then(()=>{btn.classList.add('btn-copied');btn.textContent='\u2713 Copied!';const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>{btn.classList.remove('btn-copied');btn.innerHTML='&#10077; Cite';t.classList.remove('show');},2500);});}
 function ac(el,target,sfx,fl){let s=0;const inc=target/112;const t=setInterval(()=>{s=Math.min(s+inc,target);el.textContent=(fl?s.toFixed(1):Math.floor(s))+sfx;if(s>=target)clearInterval(t);},16);}
