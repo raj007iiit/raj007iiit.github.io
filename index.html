@@ -35,7 +35,7 @@ nav.scrolled{background:rgba(13,33,55,.96);backdrop-filter:blur(12px);padding:.7
 .btn-primary{background:var(--teal);color:var(--white);border:2px solid var(--teal);}.btn-primary:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,134,171,.4);}
 .btn-outline{background:transparent;color:rgba(255,255,255,.8);border:2px solid rgba(255,255,255,.25);}.btn-outline:hover{border-color:rgba(255,255,255,.6);color:var(--white);transform:translateY(-2px);}
 .btn-gold{background:var(--gold);color:var(--white);border:2px solid var(--gold);}.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,134,10,.4);}
-.hero-photo-ring{width:260px;height:260px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--teal),var(--gold));position:relative;animation:fadeUp .8s .4s ease both;}
+.hero-photo-ring{width:260px;height:260px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--teal),var(--gold));position:relative;animation:fadeUp .8s .4s ease both;overflow:hidden;}
 .hero-photo-ring::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(46,134,171,.3);animation:spin 12s linear infinite;}
 .hero-photo-ring::after{content:'';position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(200,134,10,.2);animation:spin 20s linear infinite reverse;}
 @keyframes spin{to{transform:rotate(360deg)}}
